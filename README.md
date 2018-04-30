@@ -1,1 +1,1 @@
-# bakos-holub-vava-2018
+#Aplikacia na predmet vava 2018

@@ -50,3 +50,29 @@
   <message>Hi How r u?</message>
 </record>
 </log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-05T15:48:02</date>
+  <millis>1525528082831</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-05T15:48:02</date>
+  <millis>1525528082898</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>

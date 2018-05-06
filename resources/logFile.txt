@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T10:30:14</date>
+  <millis>1525595414902</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T10:30:14</date>
+  <millis>1525595414931</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T10:30:50</date>
+  <millis>1525595450665</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T10:30:50</date>
+  <millis>1525595450697</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T10:43:38</date>
+  <millis>1525596218469</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T10:43:38</date>
+  <millis>1525596218509</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T10:45:32</date>
+  <millis>1525596332685</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T10:45:32</date>
+  <millis>1525596332715</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T10:45:40</date>
+  <millis>1525596340750</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T10:45:40</date>
+  <millis>1525596340783</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T10:51:34</date>
+  <millis>1525596694127</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T10:51:34</date>
+  <millis>1525596694162</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:14:56</date>
+  <millis>1525598096984</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:14:57</date>
+  <millis>1525598097016</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:15:35</date>
+  <millis>1525598135559</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:15:35</date>
+  <millis>1525598135600</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:27:49</date>
+  <millis>1525598869079</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:27:49</date>
+  <millis>1525598869114</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:36:10</date>
+  <millis>1525599370085</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:36:10</date>
+  <millis>1525599370123</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:36:47</date>
+  <millis>1525599407845</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:36:47</date>
+  <millis>1525599407878</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:37:06</date>
+  <millis>1525599426445</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:37:06</date>
+  <millis>1525599426481</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:40:24</date>
+  <millis>1525599624174</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:40:24</date>
+  <millis>1525599624211</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:42:00</date>
+  <millis>1525599720919</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:42:00</date>
+  <millis>1525599720968</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>server.serverService.LoginBean</class>
+  <method>getUser</method>
+  <thread>1</thread>
+  <message>ERROR </message>
+  <exception>
+    <message>java.lang.ClassNotFoundException: org.postgresql.Driver</message>
+    <frame>
+      <class>java.net.URLClassLoader</class>
+      <method>findClass</method>
+      <line>381</line>
+    </frame>
+    <frame>
+      <class>java.lang.ClassLoader</class>
+      <method>loadClass</method>
+      <line>424</line>
+    </frame>
+    <frame>
+      <class>sun.misc.Launcher$AppClassLoader</class>
+      <method>loadClass</method>
+      <line>349</line>
+    </frame>
+    <frame>
+      <class>java.lang.ClassLoader</class>
+      <method>loadClass</method>
+      <line>357</line>
+    </frame>
+    <frame>
+      <class>java.lang.Class</class>
+      <method>forName0</method>
+    </frame>
+    <frame>
+      <class>java.lang.Class</class>
+      <method>forName</method>
+      <line>264</line>
+    </frame>
+    <frame>
+      <class>server.serverService.LoginBean</class>
+      <method>getUser</method>
+      <line>37</line>
+    </frame>
+    <frame>
+      <class>client.Main</class>
+      <method>invokeLogin</method>
+      <line>65</line>
+    </frame>
+    <frame>
+      <class>client.Main</class>
+      <method>main</method>
+      <line>44</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2018-05-06T11:42:00</date>
+  <millis>1525599720975</millis>
+  <sequence>2</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:50:00</date>
+  <millis>1525600200872</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:50:00</date>
+  <millis>1525600200921</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>server.serverService.LoginBean</class>
+  <method>getUser</method>
+  <thread>1</thread>
+  <message>ERROR </message>
+  <exception>
+    <message>java.lang.ClassNotFoundException: org.postgresql.Driver</message>
+    <frame>
+      <class>java.net.URLClassLoader</class>
+      <method>findClass</method>
+      <line>381</line>
+    </frame>
+    <frame>
+      <class>java.lang.ClassLoader</class>
+      <method>loadClass</method>
+      <line>424</line>
+    </frame>
+    <frame>
+      <class>sun.misc.Launcher$AppClassLoader</class>
+      <method>loadClass</method>
+      <line>349</line>
+    </frame>
+    <frame>
+      <class>java.lang.ClassLoader</class>
+      <method>loadClass</method>
+      <line>357</line>
+    </frame>
+    <frame>
+      <class>java.lang.Class</class>
+      <method>forName0</method>
+    </frame>
+    <frame>
+      <class>java.lang.Class</class>
+      <method>forName</method>
+      <line>264</line>
+    </frame>
+    <frame>
+      <class>server.serverService.LoginBean</class>
+      <method>getUser</method>
+      <line>37</line>
+    </frame>
+    <frame>
+      <class>client.Main</class>
+      <method>invokeLogin</method>
+      <line>65</line>
+    </frame>
+    <frame>
+      <class>client.Main</class>
+      <method>main</method>
+      <line>44</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2018-05-06T11:50:00</date>
+  <millis>1525600200929</millis>
+  <sequence>2</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>client.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:50:47</date>
+  <millis>1525600247430</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:50:47</date>
+  <millis>1525600247466</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:51:05</date>
+  <millis>1525600265686</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:51:05</date>
+  <millis>1525600265722</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2018-05-06T11:52:03</date>
+  <millis>1525600323552</millis>
+  <sequence>0</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>My first log</message>
+</record>
+<record>
+  <date>2018-05-06T11:52:03</date>
+  <millis>1525600323587</millis>
+  <sequence>1</sequence>
+  <logger>log</logger>
+  <level>INFO</level>
+  <class>Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Hi How r u?</message>
+</record>
+</log>

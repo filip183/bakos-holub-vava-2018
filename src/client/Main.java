@@ -1,8 +1,17 @@
 package client;
 
 
+import model.User;
+import server.serverService.LoginBean;
+import server.serverService.Service;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import java.io.IOException;
+import java.util.Hashtable;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -31,11 +40,49 @@ public class Main {
             // the following statement is used to log any messages
             logger.info("My first log");
 
-        } catch (IOException e1) {
+
+            invokeLogin();
+//            Context context = new InitialContext();
+//            LoginBean loginBean = (LoginBean) context.lookup("ejb:server/serverService/LoginBean");
+//
+//            System.out.println(loginBean.getUser().getLogin());
+
+
+
+        } catch (Exception e1) {
             e1.printStackTrace();
         }
 
         logger.info("Hi How r u?");
 
+    }
+
+    private static void invokeLogin() throws NamingException {
+        // Let's lookup the remote stateless calculator
+        final LoginBean statelessLoginBean = new LoginBean();
+
+
+        User user = statelessLoginBean.getUser();
+        System.out.println("Name = " + user.getLogin());
+
+    }
+
+    private static LoginBean lookupRemoteLoginBean() throws NamingException {
+        final Hashtable jndiProperties = new Hashtable();
+        Properties prop= new Properties();
+        //prop.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
+        prop.put(Context.PROVIDER_URL, "http-remoting://localhost:8080/a");
+
+        //prop.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+        final Context context = new InitialContext(prop);
+       // final Context context = new InitialContext();
+//        final String appName = "VaVa20182";
+//
+//        final String moduleName = "Vava20182_ejb_exploded";
+//
+//        final String distinctName = "";
+//        final String beanName = LoginBean.class.getSimpleName();
+//        final String viewClassName = LoginBean.class.getName();
+        return (LoginBean) context.lookup("ejb:/Vava20182_war_exploded//LoginBean!server.serverService.LoginBeanRemote");
     }
 }

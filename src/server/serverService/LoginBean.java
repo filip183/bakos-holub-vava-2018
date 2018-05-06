@@ -2,6 +2,7 @@ package server.serverService;
 
 import model.User;
 
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Stateless
-@Path("/getUser")
+@Remote(LoginBeanRemote.class)
 public class LoginBean implements LoginBeanRemote {
     public static final Logger logger=Logger.getLogger("log");
 
@@ -23,8 +24,8 @@ public class LoginBean implements LoginBeanRemote {
     public LoginBean() {
     }
 
-    @GET
-    public String getUser(){
+
+    public User getUser(){
 
         User user=null;
         Connection con = null;
@@ -49,13 +50,13 @@ public class LoginBean implements LoginBeanRemote {
             user= new User(rs.getInt(1),rs.getString(2),
                     rs.getString(3),rs.getString(4));
             System.out.println("User name " + user.getLogin() + " LOGIN " + user.getPassword() + " MAIL " + user.getEmail());
-            return "User name " + rs.getInt(1);
+            return user;
         } catch (Exception e){
 
             logger.log(Level.INFO,"ERROR ",e);
             e.printStackTrace();
         }
-        return "agagaga";
+        return null;
         //return "User name " + user.getLogin();
     }
 

@@ -4,9 +4,6 @@ import model.User;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

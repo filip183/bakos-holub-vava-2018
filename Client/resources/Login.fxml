@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="259.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+   <children>
+      <GridPane prefHeight="259.0" prefWidth="537.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.20001220703125" minWidth="10.0" prefWidth="28.79996719360352" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.80002059936524" minWidth="10.0" prefWidth="170.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.4" minWidth="10.0" prefWidth="170.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="234.19996337890626" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="37.40003662109376" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="91.79999389648438" minHeight="10.0" prefHeight="91.79999389648438" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="70.79998779296875" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="82.20001831054688" minHeight="4.599981689453131" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="82.20001831054688" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="82.20001831054688" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="37.19998779296873" minHeight="10.0" prefHeight="28.599999999999994" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane GridPane.columnIndex="3">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.5999755859375" minWidth="10.0" prefWidth="58.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.800048828125" minWidth="10.0" prefWidth="130.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="login_en" mnemonicParsing="false" onMouseClicked="#changeLangLoginEN" prefHeight="42.0" prefWidth="154.0" text="English" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="login_lang" alignment="CENTER" prefHeight="36.0" prefWidth="136.0" text="Jazyk" GridPane.columnIndex="1" />
+                  <Button fx:id="login_sk" alignment="CENTER" onMouseClicked="#changeLangLoginSK" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" text="Slovenčina" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+            <Label fx:id="login_user_nameI" alignment="CENTER" prefHeight="38.0" prefWidth="194.0" text="Prihlasovacie meno" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="login_pass" alignment="CENTER" prefHeight="58.0" prefWidth="217.0" text="Heslo" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="login_user_name" prefHeight="35.0" prefWidth="163.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="login_user_pass" prefHeight="50.0" prefWidth="160.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </GridPane.margin>
+            </TextField>
+            <Button fx:id="login_login" mnemonicParsing="false" onMouseClicked="#login" prefHeight="46.0" prefWidth="193.0" text="Prihlásiť" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="login_registation" mnemonicParsing="false" prefHeight="40.0" prefWidth="194.0" text="Registrovať" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

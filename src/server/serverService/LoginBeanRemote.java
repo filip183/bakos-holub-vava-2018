@@ -10,4 +10,5 @@ import javax.ws.rs.QueryParam;
 public interface LoginBeanRemote {
 
     User getUser();
+    User authentification(User user);
 }

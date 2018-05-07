@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 @Stateless
 @Remote(LoginBeanRemote.class)
 public class LoginBean implements LoginBeanRemote {
-    public static final Logger logger=Logger.getLogger("log");
+    public static final Logger logger=Logger.getLogger(LoginBean.class.getName());
 
 
 
@@ -26,12 +26,12 @@ public class LoginBean implements LoginBeanRemote {
         Connection con = null;
         String driver = "org.postgresql.Driver";
         try {
-            FileHandler fh = new FileHandler("resources/ServerlogFile.txt", true);
+            FileHandler fh = new FileHandler("C:\\Programovanie\\Java\\Vava20182\\resources\\ServerlogFile.txt", true);
             logger.addHandler(fh);
 
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/vava",
-                    "postgres" , "loginHeslo");
+                    "postgres" , "heslo");
 
             Statement st = con.createStatement();
 
@@ -62,14 +62,15 @@ public class LoginBean implements LoginBeanRemote {
         Connection con = null;
         String driver = "org.postgresql.Driver";
         try {
-            FileHandler fh = new FileHandler("resources/ServerlogFile.txt", true);
-            logger.addHandler(fh);
+            FileHandler fh = new FileHandler("C:\\Programovanie\\Java\\Vava20182\\resources\\ServerlogFile.txt", true);
+           // logger.addHandler(fh);
 
-            logger.fine("Log Funguje");
+            //logger.log(Level.INFO,"FUNGUJE");
+            //logger.fine("Log Funguje");
 
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/vava",
-                    "postgres" , "loginHeslo");
+                    "postgres" , "heslo");
 
             Statement st = con.createStatement();
 
@@ -99,7 +100,7 @@ public class LoginBean implements LoginBeanRemote {
         String driver = "org.postgresql.Driver";
         PreparedStatement stmt = null;
         try {
-            FileHandler fh = new FileHandler("resources/ServerlogFile.txt", true);
+            FileHandler fh = new FileHandler("C:\\Programovanie\\Java\\Vava20182\\resources\\ServerlogFile.txt", true);
             logger.addHandler(fh);
 
             Class.forName(driver).newInstance();
@@ -121,7 +122,6 @@ public class LoginBean implements LoginBeanRemote {
 
             return 1;
         } catch (Exception e){
-
             logger.log(Level.INFO,"ERROR ",e);
             e.printStackTrace();
             return 0;

@@ -1,11 +1,14 @@
 package main;
 
 
+import javafx.collections.ObservableList;
+import model.MovieList;
 import model.User;
 import controller.*;
 import server.serverService.LoginBean;
 import server.serverService.LoginBeanRemote;
 import server.serverService.Service;
+import server.serverService.UserMoviesBeanRemote;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -40,10 +43,12 @@ public class Main {
             fh = new FileHandler("logFile.txt",true);
             logger.addHandler(fh);
 
+            //MovieList movieList=invokeUserMovies(1);
 
-            final LoginBeanRemote statelessLoginBean = lookupRemoteLoginBean();
-
-            System.out.println(statelessLoginBean.vrat("Hola Jose"));
+            //System.out.println(movieList.getList().get(1).getTitle());
+            //            final LoginBeanRemote statelessLoginBean = lookupRemoteLoginBean();
+//
+//            System.out.println(statelessLoginBean.vrat("Hola Jose"));
 
             // the following statement is used to log any messages
 
@@ -71,8 +76,8 @@ public class Main {
 
 
         User user1 = statelessLoginBean.authentification(user);
-        System.out.println("USER " + user1.getLogin());
-        if (user!=null && user.getPassword().equals(user1.getPassword())){
+
+        if (user1!=null && user.getPassword().equals(user1.getPassword())){
             userGlobal=user1;
             return user1;
         } else {
@@ -99,5 +104,20 @@ public class Main {
         final Context context = new InitialContext();
 
         return (LoginBeanRemote) context.lookup("ejb:/Vava20182_war_exploded//LoginBean!server.serverService.LoginBeanRemote");
+    }
+
+    public MovieList invokeUserMovies(int id) throws NamingException {
+        final UserMoviesBeanRemote statelessUserMoviesBean = lookupRemoteUserMovieBean();
+
+        return statelessUserMoviesBean.getMovies(id);
+    }
+
+    private static UserMoviesBeanRemote lookupRemoteUserMovieBean() throws NamingException{
+        Properties prop= new Properties();
+
+        final Context context = new InitialContext();
+
+        return (UserMoviesBeanRemote) context.lookup("ejb:/Vava20182_war_exploded//UserMoviesBean!server.serverService.UserMoviesBeanRemote");
+
     }
 }

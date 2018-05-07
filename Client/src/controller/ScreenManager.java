@@ -10,7 +10,8 @@ public class ScreenManager {
     private static Stage stage;
     public static String LOGIN = "/Login.fxml";
     public static String REGISTRATION = "/Registration.fxml";
-
+    public static String USER_MOVIES = "/UserMovies.fxml";
+    public static String USER_VIEW = "/User.fxml";
 
     public ScreenManager(Stage stage) {
         ScreenManager.stage = stage;
@@ -32,6 +33,7 @@ public class ScreenManager {
 
         } catch (Exception e) {
             Main.logger.severe("Chyba pri vytvoreni sceny"+sceneName+" \n"+ e.getMessage());
+            e.printStackTrace();
         }
 
     }

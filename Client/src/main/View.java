@@ -2,8 +2,13 @@ package main;
 
 import controller.Controller;
 import controller.LoginView;
+import controller.ScreenManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
+
+import javax.imageio.IIOException;
+import java.io.IOException;
+import java.util.logging.FileHandler;
 
 
 public class View extends Application {
@@ -14,11 +19,13 @@ public class View extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        ScreenManager.setStage(primaryStage);
+        Controller.loginView = new LoginView();
         try {
-            Controller.loginView = new LoginView();
-
+            FileHandler fh = new FileHandler("resources/logFile.txt", true);
+            Main.logger.addHandler(fh);
         }
-        catch (Exception e){
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

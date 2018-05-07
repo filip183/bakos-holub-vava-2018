@@ -4,10 +4,7 @@ import model.User;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +13,7 @@ import java.util.logging.Logger;
 @Remote(LoginBeanRemote.class)
 public class LoginBean implements LoginBeanRemote {
     public static final Logger logger=Logger.getLogger("log");
+
 
 
     public LoginBean() {
@@ -28,7 +26,7 @@ public class LoginBean implements LoginBeanRemote {
         Connection con = null;
         String driver = "org.postgresql.Driver";
         try {
-            FileHandler fh = new FileHandler("C:\\Programovanie\\Java\\Vava20182\\resources\\log2.txt");
+            FileHandler fh = new FileHandler("resources/ServerlogFile.txt", true);
             logger.addHandler(fh);
 
             Class.forName(driver).newInstance();
@@ -64,8 +62,10 @@ public class LoginBean implements LoginBeanRemote {
         Connection con = null;
         String driver = "org.postgresql.Driver";
         try {
-            FileHandler fh = new FileHandler("C:\\Programovanie\\Java\\Vava20182\\resources\\log2.txt");
+            FileHandler fh = new FileHandler("resources/ServerlogFile.txt", true);
             logger.addHandler(fh);
+
+            logger.fine("Log Funguje");
 
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/vava",
@@ -94,4 +94,41 @@ public class LoginBean implements LoginBeanRemote {
         //return "User name " + user.getLogin();
     }
 
+    public int Registracia(User user) {
+        Connection con = null;
+        String driver = "org.postgresql.Driver";
+        PreparedStatement stmt = null;
+        try {
+            FileHandler fh = new FileHandler("resources/ServerlogFile.txt", true);
+            logger.addHandler(fh);
+
+            Class.forName(driver).newInstance();
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/vava",
+                    "postgres" , "heslo");
+
+            Statement st = con.createStatement();
+
+            String insertPreparedStatement = "insert into users(id, login,password,email) values(default,?, ?, ?)";
+                con.setAutoCommit(false);
+                stmt = con.prepareStatement(insertPreparedStatement);
+                stmt.setString(1, user.getLogin());
+                stmt.setString(2, user.getPassword());
+                stmt.setString(3, user.getEmail());
+                stmt.execute();
+                con.commit();
+
+            System.out.println("User name " + user.getLogin() + " LOGIN " + user.getPassword() + " MAIL " + user.getEmail());
+
+            return 1;
+        } catch (Exception e){
+
+            logger.log(Level.INFO,"ERROR ",e);
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public String vrat(String string) {
+        return null;
+    }
 }

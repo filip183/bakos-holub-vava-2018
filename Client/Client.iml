@@ -13,26 +13,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../postgresql-42.2.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://C:/ProgLang/oc4j-1.5.105-v200709061325.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="jar://C:/ProgLang/oc4j-1.5.105-v200709061325.jar!/" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://C:/ProgLang/wildfly-12.0.0.Final/bin/client/jboss-client.jar!/" />
+          <root url="jar://C:/JAVA ADDS/wildfly-12.0.0.Final/bin/client/jboss-client.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -22,6 +22,12 @@ public class User implements Serializable{
         this.email=null;
     }
 
+    public User(String login, String password, String email) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
+
     public int getId() {
         return id;
     }

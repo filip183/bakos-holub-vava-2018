@@ -1,8 +1,7 @@
-package main;
+
 
 
 import model.User;
-import controller.*;
 import server.serverService.LoginBean;
 import server.serverService.LoginBeanRemote;
 import server.serverService.Service;
@@ -20,8 +19,6 @@ import java.util.logging.Logger;
 
 public class Main {
     public static final Logger logger=Logger.getLogger("log");
-//    public static Controller controller = new Controller();
-    static User userGlobal;
 
     public static void main(String[] args) {
         FileHandler fh;
@@ -37,19 +34,15 @@ public class Main {
 
             System.out.println("");
             // This block configure the logger with handler and formatter
-            fh = new FileHandler("logFile.txt",true);
-            logger.addHandler(fh);
+         //   fh = new FileHandler("/resources/logFile.txt",true);
+         //   logger.addHandler(fh);
 
-
-            final LoginBeanRemote statelessLoginBean = lookupRemoteLoginBean();
-
-            System.out.println(statelessLoginBean.vrat("Hola Jose"));
 
             // the following statement is used to log any messages
+            logger.info("My first log");
 
 
-
-            //invokeLogin();
+            invokeLogin();
 //            Context context = new InitialContext();
 //            LoginBean loginBean = (LoginBean) context.lookup("ejb:server/serverService/LoginBean");
 //
@@ -61,43 +54,36 @@ public class Main {
             e1.printStackTrace();
         }
 
-
+        logger.info("Hi How r u?");
 
     }
 
-    public User invokeLogin(User user) throws NamingException {
+    private static void invokeLogin() throws NamingException {
         // Let's lookup the remote stateless calculator
         final LoginBeanRemote statelessLoginBean = lookupRemoteLoginBean();
 
 
-        User user1 = statelessLoginBean.authentification(user);
-        System.out.println("USER " + user1.getLogin());
-        if (user!=null && user.getPassword().equals(user1.getPassword())){
-            userGlobal=user1;
-            return user1;
-        } else {
-            userGlobal=null;
-            return null;
-        }
-
+        User user = statelessLoginBean.getUser();
+        System.out.println("Name = " + user.getLogin());
 
     }
-
-    public int invokeRegistration(User user) throws NamingException {
-        // Let's lookup the remote stateless calculator
-        final LoginBeanRemote statelessLoginBean = lookupRemoteLoginBean();
-
-
-        return statelessLoginBean.Registracia(user);
-    }
-
 
     private static LoginBeanRemote lookupRemoteLoginBean() throws NamingException {
         final Hashtable jndiProperties = new Hashtable();
         Properties prop= new Properties();
+        prop.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
+        prop.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
 
-        final Context context = new InitialContext();
-
+        //prop.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
+        final Context context = new InitialContext(prop);
+        // final Context context = new InitialContext();
+//        final String appName = "VaVa20182";
+//
+//        final String moduleName = "Vava20182_ejb_exploded";
+//
+//        final String distinctName = "";
+//        final String beanName = LoginBean.class.getSimpleName();
+//        final String viewClassName = LoginBean.class.getName();
         return (LoginBeanRemote) context.lookup("ejb:/Vava20182_war_exploded//LoginBean!server.serverService.LoginBeanRemote");
     }
 }

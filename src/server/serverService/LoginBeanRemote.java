@@ -11,4 +11,6 @@ public interface LoginBeanRemote {
 
     User getUser();
     User authentification(User user);
+    String vrat(String string);
+    int Registracia(User user);
 }

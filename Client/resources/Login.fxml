@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="259.0" prefWidth="537.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+<AnchorPane prefHeight="260.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <children>
-      <GridPane prefHeight="259.0" prefWidth="537.0">
+      <GridPane prefHeight="260.0" prefWidth="550.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.20001220703125" minWidth="10.0" prefWidth="28.79996719360352" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.80002059936524" minWidth="10.0" prefWidth="170.0" />
@@ -41,7 +41,7 @@
                <children>
                   <Button fx:id="login_en" mnemonicParsing="false" onMouseClicked="#changeLangLoginEN" prefHeight="42.0" prefWidth="154.0" text="English" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label fx:id="login_lang" alignment="CENTER" prefHeight="36.0" prefWidth="136.0" text="Jazyk" GridPane.columnIndex="1" />
-                  <Button fx:id="login_sk" alignment="CENTER" onMouseClicked="#changeLangLoginSK" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="56.0" prefWidth="232.0" text="Slovenčina" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="login_sk" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#changeLangLoginSK" prefHeight="56.0" prefWidth="232.0" text="Slovenčina" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Label fx:id="login_user_nameI" alignment="CENTER" prefHeight="38.0" prefWidth="194.0" text="Prihlasovacie meno" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -61,7 +61,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="login_registation" mnemonicParsing="false" prefHeight="40.0" prefWidth="194.0" text="Registrovať" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <Button fx:id="login_registation" mnemonicParsing="false" onAction="#registration" prefHeight="40.0" prefWidth="194.0" text="Registrovať" GridPane.columnIndex="3" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>

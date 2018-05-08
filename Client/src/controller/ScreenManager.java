@@ -12,8 +12,10 @@ public class ScreenManager {
     public static String REGISTRATION = "/Registration.fxml";
     public static String USER_MOVIES = "/UserMovies.fxml";
     public static String USER_VIEW = "/User.fxml";
-    public static String FILMDETAIL ="/FilmDetail.fxml";
-    public static String FILTERMOVIES ="/SearchFilters.fxml";
+    public static String FILM_DETAIL ="/FilmDetail.fxml";
+    public static String FILTER_MOVIES ="/SearchFilters.fxml";
+    public static String ALL_MOVIES ="/UserMovies.fxml";
+
     public ScreenManager(Stage stage) {
         ScreenManager.stage = stage;
     }

@@ -13,7 +13,7 @@ public class FilmDetailView {
 
 
     public FilmDetailView() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(ScreenManager.FILMDETAIL));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ScreenManager.FILM_DETAIL));
        // ScreenManager.createScene("Film Detail",loader);
         try {
             System.out.println("Film Detail1");

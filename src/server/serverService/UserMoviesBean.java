@@ -38,7 +38,7 @@ public class UserMoviesBean implements UserMoviesBeanRemote{
 
             Statement st = con.createStatement();
 
-            String str= String.format("SELECT m2.title, m2.genre, d2.name, m2.year, r.rating FROM reviews r " +
+            String str= String.format("SELECT m2.title, m2.genre, d2.name, m2.year, r.rating, m2.link, d2.link FROM reviews r " +
                     "JOIN movies m2 ON r.movie_id = m2.id " +
                     "JOIN directors d2 ON m2.director_id = d2.id " +
                     "WHERE user_id= %d;",id);
@@ -47,7 +47,8 @@ public class UserMoviesBean implements UserMoviesBeanRemote{
 
             while(rs.next()){
                 movies.add (new Movie(rs.getString(1),rs.getString(2),
-                        rs.getString(4),rs.getString(3),rs.getInt(5)));
+                        rs.getString(4),rs.getString(3),rs.getInt(5),
+                        rs.getString(6),rs.getString(7)));
             }
 
             MovieList movieList = new MovieList(movies);

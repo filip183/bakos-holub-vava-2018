@@ -8,13 +8,33 @@ public class Movie implements Serializable {
     private String year;
     private String director;
     private int rating;
+    private String link;
+    private String dirLink;
 
-    public Movie(String title, String genre, String year, String director, int rating) {
+    public Movie(String title, String genre, String year, String director, int rating, String link, String dirLink) {
         this.title = title;
         this.genre = genre;
         this.year = year;
         this.director = director;
         this.rating = rating;
+        this.link=link;
+        this.dirLink=dirLink;
+    }
+
+    public String getDirLink() {
+        return dirLink;
+    }
+
+    public void setDirLink(String dirLink) {
+        this.dirLink = dirLink;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public int getRating() {

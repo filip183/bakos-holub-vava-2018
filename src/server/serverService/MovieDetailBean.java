@@ -22,19 +22,24 @@ public class MovieDetailBean implements MovieDetailBeanRemote {
         try {
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/vava",
-                    "postgres" , "heslo");
+                    "postgres", "heslo");
             Statement st = con.createStatement();
 
-            String str= String.format("SELECT r.rating, r.detaily FROM reviews r JOIN movies m2 ON r.movie_id = m2.id" +
-                    " WHERE m2.title like '%s' and r.user_id = %d",movie,id);
+            String str = String.format("SELECT r.rating, r.detailr FROM reviews r JOIN movies m2 ON r.movie_id = m2.id" +
+                    " WHERE m2.title like '%s' and r.user_id = %d", movie, id);
 
             ResultSet resultSet = st.executeQuery(str);
-            while (resultSet.next()){
+            if (!resultSet.next()){
+                list.add(""+0);
+                list.add("-----");
+            } else {
                 list.add(resultSet.getString(1));
                 list.add(resultSet.getString(2));
             }
-            str= String.format("SELECT a.name FROM actors a JOIN actedin a2 ON a.id = a2.actor_id JOIN movies m2 ON a2.movie_id = m2.id " +
-                    " WHERE m2.title like '%s'",movie);
+            str= String.format("SELECT a.name FROM actors a " +
+                    "JOIN actedin a2 ON a.id = a2.actor_id " +
+                    "JOIN movies m2 ON a2.movie_id = m2.id " +
+                    "WHERE m2.title like '%s'",movie);
             resultSet = st.executeQuery(str);
             while (resultSet.next()){
                 list.add(resultSet.getString(1));
@@ -52,7 +57,7 @@ public class MovieDetailBean implements MovieDetailBeanRemote {
 
     }
 
-    public void rating(int i,String rating,int userid , String title){
+    public void rating(int i,String rating,int userid , String title, int checkNumber){
         Connection con = null;
         String driver = "org.postgresql.Driver";
         PreparedStatement stmt = null;
@@ -66,26 +71,67 @@ public class MovieDetailBean implements MovieDetailBeanRemote {
             System.out.println("QUERy "  + str);
             ResultSet resultSet = st.executeQuery(str);
             resultSet.next();
-
-            String insertPreparedStatement = "UPDATE reviews SET rating = ? ,detaily = ? WHERE movie_id=? and user_id=?";
-            con.setAutoCommit(false);
-            stmt = con.prepareStatement(insertPreparedStatement);
-            stmt.setInt(3, resultSet.getInt(1));
-            stmt.setInt(1, i);
-            stmt.setString(2, rating);
-            stmt.setInt(4,userid );
-            stmt.execute();
-            con.commit();
-
+            String insertPreparedStatement;
+            if(checkNumber==0){
+                insertPreparedStatement = "UPDATE reviews SET rating = ? ,detailr = ? WHERE movie_id=? and user_id=?";
+                con.setAutoCommit(false);
+                stmt = con.prepareStatement(insertPreparedStatement);
+                stmt.setInt(3, resultSet.getInt(1));
+                stmt.setInt(1, i);
+                stmt.setString(2, rating);
+                stmt.setInt(4,userid );
+                stmt.execute();
+                con.commit();
+            } else {
+                insertPreparedStatement = "INSERT INTO reviews VALUES (DEFAULT, ? ,?, ?, ?);";
+                con.setAutoCommit(false);
+                stmt = con.prepareStatement(insertPreparedStatement);
+                stmt.setInt(1, resultSet.getInt(1));
+                stmt.setInt(4, i);
+                stmt.setString(3, rating);
+                stmt.setInt(2,userid );
+                stmt.execute();
+                con.commit();
+            }
         } catch (SQLException e){
             ServerLogger.log(Level.INFO,"Nepodarilo sa registrovat uzivatela ");
             e.printStackTrace();
+            try {
+                con.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         } catch (Exception e){
             ServerLogger.log(Level.INFO,"Bean exception ",e);
             e.printStackTrace();
         }
     }
 
+    @Override
+    public String actorLink(String string) {
+        Connection con = null;
+        String driver = "org.postgresql.Driver";
+        PreparedStatement stmt = null;
+        try {
+            Class.forName(driver).newInstance();
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/vava",
+                    "postgres" , "heslo");
+
+            Statement st = con.createStatement();
+            String str= String.format("Select link FROM actors WHERE name LIKE '%s'",string);
+            System.out.println("QUERy "  + str);
+            ResultSet resultSet = st.executeQuery(str);
+            resultSet.next();
+            return resultSet.getString(1);
 
 
+        } catch (SQLException e){
+            ServerLogger.log(Level.INFO,"SQL Error ");
+            e.printStackTrace();
+        } catch (Exception e){
+            ServerLogger.log(Level.INFO,"Bean exception ",e);
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

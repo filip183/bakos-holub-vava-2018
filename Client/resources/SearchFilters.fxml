@@ -38,7 +38,7 @@
             <Label fx:id="searchFilters_rating_label" prefHeight="79.0" prefWidth="190.0" text="Hodnotenie" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Label fx:id="searchFilters_director_label" prefHeight="111.0" prefWidth="286.0" text="Reziser" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label fx:id="searchFilters_actors_label" prefHeight="71.0" prefWidth="167.0" text="Herci" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Button fx:id="searchFilters_search_button" mnemonicParsing="false" text="Vyhladaj" GridPane.columnIndex="3" GridPane.rowIndex="8">
+            <Button fx:id="searchFilters_search_button" mnemonicParsing="false" onMouseClicked="#searchMovies" text="Vyhladaj" GridPane.columnIndex="3" GridPane.rowIndex="8">
                <GridPane.margin>
                   <Insets left="70.0" />
                </GridPane.margin>

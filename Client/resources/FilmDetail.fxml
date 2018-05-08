@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,8 +18,8 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="24.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="253.0" minWidth="10.0" prefWidth="109.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="10.0" prefWidth="46.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="10.0" prefWidth="397.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="23.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="10.0" prefWidth="349.5999389648438" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="71.2000610351563" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
@@ -45,15 +47,18 @@
                   <Insets left="70.0" />
                </GridPane.margin>
             </Button>
-            <TextField fx:id="filmDetail_title_field" editable="false" prefHeight="91.0" prefWidth="397.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextField fx:id="filmDetail_genre_field" editable="false" prefHeight="91.0" prefWidth="375.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <TextField fx:id="filmDetail_director_field" editable="false" prefHeight="79.0" prefWidth="379.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <TextField fx:id="filmDetail_actors_field" editable="false" prefHeight="57.0" prefWidth="379.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <TextField fx:id="filmDetail_rating_field" editable="false" prefHeight="51.0" prefWidth="371.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <TextField fx:id="filmDetail_myRating_field" prefHeight="59.0" prefWidth="363.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
             <TextField fx:id="filmDetail_ratingDetail_field" prefHeight="57.0" prefWidth="367.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
             <Label fx:id="filmDetail_year_label" prefHeight="61.0" prefWidth="149.0" text="Rok" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="filmDetail_year_field" prefHeight="81.0" prefWidth="431.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Hyperlink fx:id="hyperlink_movie" onMouseClicked="#searchMovieOnline" prefHeight="41.0" prefWidth="48.0" text="-&gt;" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Hyperlink fx:id="hyperlink_director" onMouseClicked="#searchDirectorOnline" prefHeight="47.0" prefWidth="74.0" text="-&gt;" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Label fx:id="filmDetail_title_field" prefHeight="55.0" prefWidth="366.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label fx:id="filmDetail_genre_field" prefHeight="61.0" prefWidth="400.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label fx:id="filmDetail_year_field" prefHeight="77.0" prefWidth="426.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label fx:id="filmDetail_director_field" prefHeight="97.0" prefWidth="490.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label fx:id="filmDetail_rating_field" prefHeight="81.0" prefWidth="427.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <ComboBox fx:id="filmDetail_actors_field" prefHeight="85.0" prefWidth="366.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Hyperlink fx:id="hyperlink_actor" onMouseClicked="#searchActorOnline" prefHeight="47.0" prefWidth="74.0" text="-&gt;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </children>

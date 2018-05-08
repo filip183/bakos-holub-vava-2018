@@ -4,10 +4,7 @@ package main;
 import model.Movie;
 import model.MovieList;
 import model.User;
-import server.serverService.LoginBeanRemote;
-import server.serverService.MovieDetailBean;
-import server.serverService.MovieDetailBeanRemote;
-import server.serverService.UserMoviesBeanRemote;
+import server.serverService.*;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -111,8 +108,31 @@ public class BeanInvoker {
         return statelessUserMoviesBean.movieDetail(movie,id);
     }
 
-    public static void invokeMovieDetailsRating(int i,String rating,int user , String title) {
+    public static void invokeMovieDetailsRating(int i,String rating,int user , String title,int checkNumber) {
         final MovieDetailBeanRemote statelessUserMoviesBean = lookupMovieDetailBean();
-        statelessUserMoviesBean.rating(i, rating, user, title);
+        statelessUserMoviesBean.rating(i, rating, user, title,checkNumber);
     }
+
+    public static String invokeMovieDetailsActorLink(String name){
+        final MovieDetailBeanRemote statelessUserMoviesBean = lookupMovieDetailBean();
+        return statelessUserMoviesBean.actorLink(name);
+    }
+
+    private static MovieSearchBeanRemote lookupMovieSearchBean() {
+        try {
+            final Context context = new InitialContext();
+            return (MovieSearchBeanRemote) context.lookup("ejb:/Vava20182_war_exploded//MovieSearchBean!server.serverService.MovieSearchBeanRemote");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static MovieList invokeRemoteMovieSearchBean(String filter){
+        final MovieSearchBeanRemote statelessMovieSearchBean = lookupMovieSearchBean();
+        return statelessMovieSearchBean.searchMovies(filter);
+    }
+
+
 }

@@ -2,8 +2,12 @@ package controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import main.*;
@@ -12,6 +16,8 @@ import model.MovieList;
 import model.User;
 
 import javax.naming.NamingException;
+import java.awt.*;
+import java.net.URI;
 import java.util.LinkedList;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -21,9 +27,10 @@ public class Controller {
     public static  LoginView loginView;
     static BeanInvoker beanInvoker =new BeanInvoker();
     static ResourceBundle turboWatch ;
-    static int id;
+    static int id, checkNumber;
     static String name;
     static Movie movie;
+    static String filterGlob;
     //login
     @FXML
     public Button login_en;
@@ -94,27 +101,27 @@ public class Controller {
     @FXML
     public Label filmDetail_title_label;
     @FXML
-    public TextField filmDetail_title_field;
+    public Label filmDetail_title_field;
     @FXML
     public Label filmDetail_genre_label;
     @FXML
-    public TextField filmDetail_genre_field;
+    public Label filmDetail_genre_field;
     @FXML
     public Label filmDetail_year_label;
     @FXML
-    public TextField filmDetail_year_field;
+    public Label filmDetail_year_field;
     @FXML
     public Label filmDetail_director_label;
     @FXML
-    public TextField filmDetail_director_field;
+    public Label filmDetail_director_field;
     @FXML
     public Label filmDetail_actors_label;
     @FXML
-    public TextField filmDetail_actors_field;
+    public ComboBox<String> filmDetail_actors_field;
     @FXML
     public Label filmDetail_rating_label;
     @FXML
-    public TextField filmDetail_rating_field;
+    public Label filmDetail_rating_field;
     @FXML
     public Label filmDetail_myRating_label;
     @FXML
@@ -267,7 +274,14 @@ public class Controller {
 
     @FXML
     public void userMovies(){
-        new UserMoviesView();
+        checkNumber=0;
+        new UserMoviesView(0);
+    }
+
+    @FXML
+    public void allMovies(){
+        checkNumber=1;
+        new UserMoviesView(1);
     }
 
     @FXML
@@ -352,6 +366,21 @@ public class Controller {
             searchFilters_search_button.setText(turboWatch.getString("Hladaj"));
             searchFilters_spat_button.setText(turboWatch.getString("registrationSpat"));
         }
+        if (ScreenManager.getStage().getTitle().equals("MoviesByFilter")){
+            turboWatch= ResourceBundle.getBundle("turboWatch");
+            ScreenManager.getStage().setTitle(turboWatch.getString("vyhladaneFilmy"));
+            user_movies_column_director.setText(turboWatch.getString("umStlpecReziser"));
+            user_movies_column_name.setText(turboWatch.getString("umStlpecMeno"));
+            user_movies_column_genre.setText(turboWatch.getString("umStlpecZaner"));
+            user_movies_column_year.setText(turboWatch.getString("umStlpecRok"));
+            user_movies_label.setText(turboWatch.getString("vyhladaneFilmy"));
+            user_movies_column_rating.setText(turboWatch.getString("umStlpecHodnotenie"));
+            user_movies_back.setText(turboWatch.getString("registrationSpat"));
+            MovieList movieList = BeanInvoker.invokeRemoteMovieSearchBean(filterGlob);
+            fillTable(movieList);
+        }
+
+
     }
 
     @FXML
@@ -368,9 +397,10 @@ public class Controller {
     @FXML
     public void getMovieFromTable(MouseEvent event) {
         try {
+            movie = (Movie) user_movies_table.getSelectionModel().getSelectedItem();
             if (event.getClickCount()==2){
 
-                movie = (Movie) user_movies_table.getSelectionModel().getSelectedItem();
+                //movie = (Movie) user_movies_table.getSelectionModel().getSelectedItem();
                 System.out.println("TITUL "  + movie.getTitle()) ;
 
             }
@@ -381,25 +411,35 @@ public class Controller {
     }
 
     public void insertMovieDetail() {
+        ObservableList<String> actorList = FXCollections.observableArrayList();
+
         filmDetail_title_field.setText(movie.getTitle());
         filmDetail_director_field.setText(movie.getDirector());
         filmDetail_rating_field.setText(""+movie.getRating());
         filmDetail_year_field.setText(movie.getYear());
         filmDetail_genre_field.setText(movie.getGenre());
         LinkedList<String> list= BeanInvoker.invokeMovieDetails(movie.getTitle(),id);
-        String string=list.get(2);
+        //String string=list.get(2);
         filmDetail_myRating_field.setText(list.get(0));
         filmDetail_ratingDetail_field.setText(list.get(1));
-        for (int i = 3; i < list.size() ; i++) {
-            string += list.get(i)+" , ";
+
+        for (int i = 2; i < list.size() ; i++) {
+
+            actorList.add(list.get(i));
+
+           // string += list.get(i)+" , ";
         }
-        filmDetail_actors_field.setText(string);
+        System.out.println("actor " + actorList.get(0));
+        filmDetail_actors_field.getItems().setAll(actorList);
+        //filmDetail_actors_field.setText(string);
 
     }
 
     @FXML
     public void setRating(){
+
         turboWatch=ResourceBundle.getBundle("turboWatch");
+
         if (filmDetail_myRating_field.getText()==null){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Rating");
@@ -408,7 +448,8 @@ public class Controller {
             return;
         }
 
-        BeanInvoker.invokeMovieDetailsRating(Integer.parseInt(filmDetail_myRating_field.getText()),filmDetail_ratingDetail_field.getText(),id, movie.getTitle());
+        BeanInvoker.invokeMovieDetailsRating(Integer.parseInt(filmDetail_myRating_field.getText()),filmDetail_ratingDetail_field.getText(),id, movie.getTitle(),checkNumber);
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Rating");
         alert.setHeaderText(turboWatch.getString("zmenaRatingu"));
@@ -419,4 +460,116 @@ public class Controller {
     public void getSearchWin(){
         new SearchFiltersView();
     }
+
+    @FXML
+    public void searchMovieOnline(){
+        try {
+            Desktop desktop = java.awt.Desktop.getDesktop();
+            URI oURL = new URI(movie.getLink());
+            desktop.browse(oURL);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void searchDirectorOnline(){
+        try {
+            Desktop desktop = java.awt.Desktop.getDesktop();
+            URI oURL = new URI(movie.getDirLink());
+            desktop.browse(oURL);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void searchActorOnline(){
+        try {
+            String link = BeanInvoker.invokeMovieDetailsActorLink(filmDetail_actors_field.getValue());
+
+            Desktop desktop = java.awt.Desktop.getDesktop();
+            URI oURL = new URI(link);
+            desktop.browse(oURL);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void searchMovies(){
+
+        String filter;
+        int check = 0 ;
+        filter=" WHERE ";
+
+        if(!searchFilters_title_field.getText().equals("")){
+            filter += " LOWER(m2.title) like LOWER('%" + searchFilters_title_field.getText() + "%') ";
+            check=1;
+        }
+        if(check==1){
+            filter +=" AND ";
+            check=0;
+        }
+
+        if (!searchFilters_genre_field.getText().equals("")){
+            filter += " LOWER(m2.genre) like LOWER('%" + searchFilters_genre_field.getText() + "%') ";
+            check=1;
+        }
+        if(check==1){
+            filter +=" AND ";
+            check=0;
+        }
+
+        if (!searchFilters_director_field.getText().equals("")){
+            filter += " LOWER(d2.name) like LOWER('%" + searchFilters_director_field.getText() + "%') ";
+            check=1;
+        }
+        if(check==1){
+            filter +=" AND ";
+            check=0;
+        }
+
+        if (!searchFilters_actors_field.getText().equals("")){
+            filter += " LOWER(a2.name) like LOWER('%" + searchFilters_actors_field.getText() + "%') ";
+            check=1;
+        }
+        if(check==1){
+            filter +=" AND ";
+            check=0;
+        }
+
+        if (!searchFilters_year_from_field.getText().equals("")){
+            filter += " m2.year > '" + searchFilters_year_from_field.getText() + "' ";
+            check=1;
+        } else {
+            filter += " m2.year > '1900' ";
+            check=1;
+        }
+        filter +=" AND ";
+
+        if (!searchFilters_year_to_field.getText().equals("")){
+            filter += " m2.year < '" + searchFilters_year_to_field.getText() + "' ";
+            check=1;
+        } else {
+            filter += " m2.year < '2050' ";
+            check=1;
+        }
+        if (!searchFilters_year_to_field.getText().equals("")){
+            filter += " AND '" + searchFilters_rating_field.getText() + "' <= ";
+        } else {
+            filter += " AND '0' <= ";
+
+        }
+
+        filterGlob=filter;
+        System.out.println(filter);
+        allMovies();
+
+
+    }
+
+
+
 }

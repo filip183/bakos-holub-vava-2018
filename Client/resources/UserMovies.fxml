@@ -35,6 +35,9 @@
                   <TableColumn fx:id="user_movies_column_year" maxWidth="77.5999755859375" prefWidth="61.5999755859375" text="Rok" />
                   <TableColumn fx:id="user_movies_column_rating" maxWidth="106.39993286132812" prefWidth="91.19999389648433" text="Hodnotenie" />
               </columns>
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
             </TableView>
             <GridPane GridPane.columnIndex="1">
               <columnConstraints>
@@ -60,7 +63,7 @@
                         <Insets />
                      </opaqueInsets>
                      <HBox.margin>
-                        <Insets right="2.0" top="2.0" />
+                        <Insets right="2.0" top="5.0" />
                      </HBox.margin>
                   </Button>
                </children>

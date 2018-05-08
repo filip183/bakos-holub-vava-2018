@@ -2,21 +2,23 @@ package controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import main.*;
-import model.Movie;
-import model.MovieList;
-import model.User;
+import model.*;
 
 import javax.naming.NamingException;
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.Locale;
@@ -31,13 +33,13 @@ public class Controller {
     static String name;
     static Movie movie;
     static String filterGlob;
+    static Review review;
     //login
-    @FXML
-    public Button login_en;
+
     @FXML
     public Label login_lang;
     @FXML
-    public Button login_sk;
+    public Button login_lang_change;
     @FXML
     public Label login_user_nameI;
     @FXML
@@ -166,7 +168,22 @@ public class Controller {
     public Button searchFilters_search_button;
     @FXML
     public Button searchFilters_spat_button;
-
+    @FXML
+    public ImageView login_logo;
+    @FXML
+    public ComboBox<String> language;
+    @FXML
+    public Label movie_reviews_all_label;
+    @FXML
+    public TableView reviews_table;
+    @FXML
+    public TableColumn<Review, String> review_user;
+    @FXML
+    public TableColumn<Review, String> review_rating;
+    @FXML
+    public Label review_detail_label;
+    @FXML
+    public TextArea review_detail;
 
 
     public Controller() {
@@ -212,17 +229,17 @@ public class Controller {
     }
 
     @FXML
-    public void changeLangLoginEN(){
-        BeanInvoker.logger.fine("Jazyk zmeneny na Anglictinu");
-        Locale.setDefault(new Locale("es", "ES"));
-        initialize();
-    }
+    public void changeLangLogin(){
+        String lang = language.getValue();
+        if(lang!=null){
+            if(lang.equals("Slovencina")) Locale.setDefault(new Locale("sk", "SK"));
+            if(lang.equals("English")) Locale.setDefault(new Locale("en", "US"));
+            if(lang.equals("Espanol")) Locale.setDefault(new Locale("es", "ES"));
+            if(lang.equals("Italian")) Locale.setDefault(new Locale("it", "IT"));
+            if(lang.equals("Islenska")) Locale.setDefault(new Locale("is", "IS"));
+            initialize();
+        }
 
-    @FXML
-    public void changeLangLoginSK(){
-        BeanInvoker.logger.fine("Jazyk zmeneny na Slovencinu");
-        Locale.setDefault(new Locale("sk", "SK"));
-        initialize();
     }
 
     @FXML
@@ -291,11 +308,29 @@ public class Controller {
     }
 
     @FXML
+    public void reviewsWindow(){
+        new ReviewsView();
+    }
+
+    @FXML
     public void logOut(){
         new LoginView();
     }
 
+    public ObservableList<String> setList(){
+        ObservableList<String> languageList = FXCollections.observableArrayList();
+        languageList.add("Slovencina");
+        languageList.add("English");
+        languageList.add("Espanol");
+        languageList.add("Italian");
+        languageList.add("Islenska");
+        return languageList;
+    }
+
     public void initialize(){
+        if(ScreenManager.getStage()==null){
+            System.out.println("RRRRPRPRPRPRPRPRPPR");
+        }
         if (ScreenManager.getStage().getTitle().equals("Registracne okno")){
             turboWatch = ResourceBundle.getBundle("turboWatch");
             ScreenManager.getStage().setTitle(turboWatch.getString("oknoRegistracia"));
@@ -304,19 +339,23 @@ public class Controller {
             registration_password_label.setText(turboWatch.getString("registrationHeslo"));
             registration_login_button.setText(turboWatch.getString("registrationRegistruj"));
             registration_back_button.setText(turboWatch.getString("registrationSpat"));
-        }
-        if (ScreenManager.getStage().getTitle().equals("Prihlasenie") || ScreenManager.getStage().getTitle().equals("Login")){
+
+        } else if (ScreenManager.getStage().getTitle().equals("Prihlasenie")){
             turboWatch = ResourceBundle.getBundle("turboWatch");
-            ScreenManager.getStage().setTitle(turboWatch.getString("oknoLogin"));
+            //ScreenManager.getStage().setTitle(turboWatch.getString("oknoLogin"));
             login_lang.setText(turboWatch.getString("loginJazyk"));
             login_user_nameI.setText(turboWatch.getString("loginPrihlasovacieMeno"));
             login_pass.setText(turboWatch.getString("loginHeslo"));
             login_login.setText(turboWatch.getString("loginPrihlasit"));
             login_registation.setText(turboWatch.getString("loginRegistrovat"));
-        }
-        if (ScreenManager.getStage().getTitle().equals("Movies")){
+            language.getItems().setAll(setList());
+            try {
+                login_logo.setImage(new Image(new FileInputStream("resources/Logo.JPG")));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else if (ScreenManager.getStage().getTitle().equals("Movies")){
             turboWatch= ResourceBundle.getBundle("turboWatch");
-            System.out.println("TU SOM");
             ScreenManager.getStage().setTitle(turboWatch.getString("oknoFilmyUzivatela"));
             user_movies_column_director.setText(turboWatch.getString("umStlpecReziser"));
             user_movies_column_name.setText(turboWatch.getString("umStlpecMeno"));
@@ -333,16 +372,14 @@ public class Controller {
                 BeanInvoker.logger.log(Level.WARNING,"ERROR",e.getMessage());
                 e.printStackTrace();
             }
-        }
-        if (ScreenManager.getStage().getTitle().equals("User")){
+        } else if (ScreenManager.getStage().getTitle().equals("User")){
             turboWatch=ResourceBundle.getBundle("turboWatch");
             user_find_movies.setText(turboWatch.getString("userVyhladajFilmy"));
             user_label.setText(turboWatch.getString("userPrihlaseny"));
             user_label_name.setText(name);
             user_logout.setText(turboWatch.getString("userOdhlasenie"));
             user_my_movies.setText(turboWatch.getString("userMojeFilmy"));
-        }
-        if (filmDetail_director_label!=null){
+        } else if (filmDetail_director_label!=null){
             turboWatch=ResourceBundle.getBundle("turboWatch");
             filmDetail_director_label.setText(turboWatch.getString("umStlpecReziser"));
             filmDetail_actors_label.setText(turboWatch.getString("actors"));
@@ -354,8 +391,7 @@ public class Controller {
             filmDetail_rating_label.setText(turboWatch.getString("umStlpecHodnotenie"));
             filmDetail_title_label.setText(turboWatch.getString("umStlpecMeno"));
             insertMovieDetail();
-        }
-        if(ScreenManager.getStage().getTitle().equals("Filter")){
+        } else if(ScreenManager.getStage().getTitle().equals("Filter")){
             turboWatch=ResourceBundle.getBundle("turboWatch");
             searchFilters_director_label.setText(turboWatch.getString("umStlpecReziser"));
             searchFilters_actors_label.setText(turboWatch.getString("actors"));
@@ -367,8 +403,7 @@ public class Controller {
             searchFilters_year_to_label.setText(turboWatch.getString("do"));
             searchFilters_search_button.setText(turboWatch.getString("Hladaj"));
             searchFilters_spat_button.setText(turboWatch.getString("registrationSpat"));
-        }
-        if (ScreenManager.getStage().getTitle().equals("MoviesByFilter")){
+        } else if (ScreenManager.getStage().getTitle().equals("MoviesByFilter")){
             turboWatch= ResourceBundle.getBundle("turboWatch");
             ScreenManager.getStage().setTitle(turboWatch.getString("vyhladaneFilmy"));
             user_movies_column_director.setText(turboWatch.getString("umStlpecReziser"));
@@ -380,9 +415,26 @@ public class Controller {
             user_movies_back.setText(turboWatch.getString("registrationSpat"));
             MovieList movieList = BeanInvoker.invokeRemoteMovieSearchBean(filterGlob);
             fillTable(movieList);
+        } else if (ScreenManager.getStage2().getTitle().equals("Okno recenzii")){
+            turboWatch= ResourceBundle.getBundle("turboWatch");
+            review_rating.setText(turboWatch.getString("umStlpecHodnotenie"));
+            review_user.setText(turboWatch.getString("uzivatel"));
+            movie_reviews_all_label.setText(turboWatch.getString("recenzie"));
+            review_detail_label.setText(turboWatch.getString("detail"));
+            ReviewList reviewList = BeanInvoker.invokeRemoteReviewBean(movie.getTitle());
+            fillTableReviews(reviewList);
         }
 
 
+    }
+
+    @FXML
+    private void fillTableReviews(ReviewList reviewList){
+        //System.out.println("REVIEW " + reviewList.getReviews().get(0).getUserName());
+        review_user.setCellValueFactory(new PropertyValueFactory<Review, String>("userName"));
+        review_rating.setCellValueFactory(new PropertyValueFactory<Review, String>("value"));
+        ObservableList<Review> list= FXCollections.observableArrayList(reviewList.getReviews());
+        reviews_table.setItems(list);
     }
 
     @FXML
@@ -411,6 +463,19 @@ public class Controller {
             e.printStackTrace();
         }
         new FilmDetailView();
+    }
+
+    @FXML
+    public void getReviewFromTable(MouseEvent event) {
+        try {
+            if (event.getClickCount()==2){
+                review_detail.setText(((Review) reviews_table.getSelectionModel().getSelectedItem()).getDetailr());
+            }
+        } catch (Exception e){
+            BeanInvoker.logger.log(Level.WARNING,"ERROR",e.getMessage());
+            e.printStackTrace();
+        }
+
     }
 
     public void insertMovieDetail() {
@@ -489,16 +554,21 @@ public class Controller {
     @FXML
     public void searchActorOnline(){
         try {
-            String link = BeanInvoker.invokeMovieDetailsActorLink(filmDetail_actors_field.getValue());
+            if(filmDetail_actors_field.getValue()!=null){
+                String link = BeanInvoker.invokeMovieDetailsActorLink(filmDetail_actors_field.getValue());
 
-            Desktop desktop = java.awt.Desktop.getDesktop();
-            URI oURL = new URI(link);
-            desktop.browse(oURL);
+                Desktop desktop = java.awt.Desktop.getDesktop();
+                URI oURL = new URI(link);
+                desktop.browse(oURL);
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
 
     @FXML
     public void searchMovies(){

@@ -59,6 +59,7 @@
             <Label fx:id="filmDetail_rating_field" prefHeight="81.0" prefWidth="427.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <ComboBox fx:id="filmDetail_actors_field" prefHeight="85.0" prefWidth="366.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <Hyperlink fx:id="hyperlink_actor" onMouseClicked="#searchActorOnline" prefHeight="47.0" prefWidth="74.0" text="-&gt;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <Hyperlink fx:id="hyperlink_reviews" onMouseClicked="#reviewsWindow" prefHeight="47.0" prefWidth="74.0" text="-&gt;" GridPane.columnIndex="4" GridPane.rowIndex="6" />
          </children>
       </GridPane>
    </children>

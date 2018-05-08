@@ -25,6 +25,7 @@ public class FilmDetailView {
             stage.setTitle("Film Detail");
             stage.setScene(scene);
             stage.show();
+            ScreenManager.setStage2(stage);
             System.out.println("Film Detail2");
         }
         catch (javafx.fxml.LoadException e) {

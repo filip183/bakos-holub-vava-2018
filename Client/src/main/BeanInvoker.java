@@ -3,6 +3,7 @@ package main;
 
 import model.Movie;
 import model.MovieList;
+import model.ReviewList;
 import model.User;
 import server.serverService.*;
 
@@ -132,6 +133,22 @@ public class BeanInvoker {
     public static MovieList invokeRemoteMovieSearchBean(String filter){
         final MovieSearchBeanRemote statelessMovieSearchBean = lookupMovieSearchBean();
         return statelessMovieSearchBean.searchMovies(filter);
+    }
+
+    private static ReviewBeanRemote lookupReviewBeanRemote() {
+        try {
+            final Context context = new InitialContext();
+            return (ReviewBeanRemote) context.lookup("ejb:/Vava20182_war_exploded//ReviewBean!server.serverService.ReviewBeanRemote");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ReviewList invokeRemoteReviewBean(String movieId){
+        final ReviewBeanRemote statelessReviewBeanRemote = lookupReviewBeanRemote();
+        return statelessReviewBeanRemote.searchReviews(movieId);
     }
 
 

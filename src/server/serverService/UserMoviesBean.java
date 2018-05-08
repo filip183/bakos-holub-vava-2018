@@ -1,11 +1,8 @@
 package server.serverService;
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import model.Movie;
 import model.MovieList;
-
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import java.sql.Connection;
@@ -13,15 +10,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 
-import static server.serverService.LoginBean.logger;
 
 @Stateless
 @Remote(UserMoviesBeanRemote.class)
 public class UserMoviesBean implements UserMoviesBeanRemote{
-
+  //  public static final ServerLogger logger=ServerLogger.getLogger(LoginBean.class.getName());
 
     @Override
     public MovieList getMovies(int id) {
@@ -31,11 +26,11 @@ public class UserMoviesBean implements UserMoviesBeanRemote{
         String driver = "org.postgresql.Driver";
 
         try {
-            FileHandler fh = new FileHandler("C:\\Programovanie\\Java\\Vava20182\\resources\\ServerlogFile.txt", true);
-            logger.addHandler(fh);
+//            FileHandler fh = new FileHandler("C:\\Programovanie\\Java\\Vava20182\\resources\\ServerlogFile.txt", true);
+//            logger.addHandler(fh);
 
-            logger.log(Level.INFO,"FUNGUJE");
-            logger.fine("Log Funguje");
+            ServerLogger.log(Level.INFO,"FUNGUJE");
+            ServerLogger.log(Level.FINE,"Log Funguje");
 
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/vava",
@@ -59,7 +54,7 @@ public class UserMoviesBean implements UserMoviesBeanRemote{
             return movieList;
         } catch (Exception e){
 
-            logger.log(Level.INFO,"ERROR ",e);
+            ServerLogger.log(Level.INFO,"ERROR ",e);
             e.printStackTrace();
         }
         return null;

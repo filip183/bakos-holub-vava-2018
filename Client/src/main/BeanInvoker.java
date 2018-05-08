@@ -1,29 +1,24 @@
 package main;
 
 
-import javafx.collections.ObservableList;
+import model.Movie;
 import model.MovieList;
 import model.User;
-import controller.*;
-import server.serverService.LoginBean;
 import server.serverService.LoginBeanRemote;
-import server.serverService.Service;
+import server.serverService.MovieDetailBean;
+import server.serverService.MovieDetailBeanRemote;
 import server.serverService.UserMoviesBeanRemote;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import java.io.IOException;
-import java.util.Hashtable;
-import java.util.Locale;
-import java.util.Properties;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Main {
+public class BeanInvoker {
     public static final Logger logger=Logger.getLogger("log");
-//    public static Controller controller = new Controller();
     static User userGlobal;
 
     public static void main(String[] args) {
@@ -42,25 +37,6 @@ public class Main {
             // This block configure the logger with handler and formatter
             fh = new FileHandler("logFile.txt",true);
             logger.addHandler(fh);
-
-            //MovieList movieList=invokeUserMovies(1);
-
-            //System.out.println(movieList.getList().get(1).getTitle());
-            //            final LoginBeanRemote statelessLoginBean = lookupRemoteLoginBean();
-//
-//            System.out.println(statelessLoginBean.vrat("Hola Jose"));
-
-            // the following statement is used to log any messages
-
-
-
-            //invokeLogin();
-//            Context context = new InitialContext();
-//            LoginBean loginBean = (LoginBean) context.lookup("ejb:server/serverService/LoginBean");
-//
-//            System.out.println(loginBean.getUser().getLogin());
-
-
 
         } catch (Exception e1) {
             e1.printStackTrace();
@@ -84,8 +60,6 @@ public class Main {
             userGlobal=null;
             return null;
         }
-
-
     }
 
     public int invokeRegistration(User user) throws NamingException {
@@ -95,7 +69,6 @@ public class Main {
 
         return statelessLoginBean.Registracia(user);
     }
-
 
     private static LoginBeanRemote lookupRemoteLoginBean() throws NamingException {
         final Hashtable jndiProperties = new Hashtable();
@@ -119,5 +92,27 @@ public class Main {
 
         return (UserMoviesBeanRemote) context.lookup("ejb:/Vava20182_war_exploded//UserMoviesBean!server.serverService.UserMoviesBeanRemote");
 
+    }
+
+    private static MovieDetailBeanRemote lookupMovieDetailBean() {
+        try {
+            final Context context = new InitialContext();
+            return (MovieDetailBeanRemote) context.lookup("ejb:/Vava20182_war_exploded//MovieDetailBean!server.serverService.MovieDetailBeanRemote");
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static LinkedList<String> invokeMovieDetails(String movie,int id) {
+        final MovieDetailBeanRemote statelessUserMoviesBean = lookupMovieDetailBean();
+
+        return statelessUserMoviesBean.movieDetail(movie,id);
+    }
+
+    public static void invokeMovieDetailsRating(int i,String rating,int user , String title) {
+        final MovieDetailBeanRemote statelessUserMoviesBean = lookupMovieDetailBean();
+        statelessUserMoviesBean.rating(i, rating, user, title);
     }
 }

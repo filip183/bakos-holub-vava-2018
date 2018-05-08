@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="210.0" prefWidth="442.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <children>
       <GridPane prefHeight="210.0" prefWidth="442.0">
@@ -55,7 +54,7 @@
                   <RowConstraints maxHeight="34.4" minHeight="10.0" prefHeight="34.4" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="user_find_movies" mnemonicParsing="false" prefHeight="49.0" prefWidth="158.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="user_find_movies" mnemonicParsing="false" onAction="#getSearchWin" prefHeight="49.0" prefWidth="158.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                      </GridPane.margin>

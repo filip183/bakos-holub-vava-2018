@@ -6,7 +6,6 @@ import controller.ScreenManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import javax.imageio.IIOException;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 
@@ -23,7 +22,7 @@ public class View extends Application {
         Controller.loginView = new LoginView();
         try {
             FileHandler fh = new FileHandler("resources/logFile.txt", true);
-            Main.logger.addHandler(fh);
+            BeanInvoker.logger.addHandler(fh);
         }
         catch (IOException e) {
             e.printStackTrace();

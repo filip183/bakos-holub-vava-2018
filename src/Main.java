@@ -4,12 +4,10 @@
 import model.User;
 import server.serverService.LoginBean;
 import server.serverService.LoginBeanRemote;
-import server.serverService.Service;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Locale;
 import java.util.Properties;
@@ -18,11 +16,19 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
 public class Main {
-    public static final Logger logger=Logger.getLogger("log");
+    public static final Logger logger=Logger.getLogger(LoginBean.class.getName());
 
     public static void main(String[] args) {
-        FileHandler fh;
-
+        try {
+            FileHandler fh = new FileHandler("C:\\Programovanie\\Java\\Vava20182\\resources\\ServerlogFile.txt", true);
+            logger.addHandler(fh);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("--------");
+        System.out.println(logger.getHandlers().length);
+        System.out.println("--------");
         try {
             //Locale.setDefault(new Locale("en"));
             ResourceBundle turboWatch = ResourceBundle.getBundle("turboWatch");

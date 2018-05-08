@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+   <children>
+      <GridPane layoutX="8.0" layoutY="8.0" prefHeight="400.0" prefWidth="600.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="24.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="253.0" minWidth="10.0" prefWidth="109.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="10.0" prefWidth="46.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="10.0" prefWidth="397.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="23.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label fx:id="filmDetail_title_label" prefHeight="93.0" prefWidth="236.0" text="Nazov" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="filmDetail_genre_label" prefHeight="87.0" prefWidth="166.0" text="Zaner" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="filmDetail_rating_label" prefHeight="79.0" prefWidth="190.0" text="Hodnotenie" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="filmDetail_myRating_label" prefHeight="75.0" prefWidth="192.0" text="Moje hodnotenie" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="filmDetail_director_label" prefHeight="111.0" prefWidth="286.0" text="Reziser" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="filmDetail_ratingDetail_label" prefHeight="57.0" prefWidth="190.0" text="Slovne hodnotenie" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label fx:id="filmDetail_actors_label" prefHeight="71.0" prefWidth="167.0" text="Herci" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="filmDetail_rate_button" mnemonicParsing="false" onAction="#setRating" text="Ohodnot" GridPane.columnIndex="3" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets left="70.0" />
+               </GridPane.margin>
+            </Button>
+            <TextField fx:id="filmDetail_title_field" editable="false" prefHeight="91.0" prefWidth="397.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="filmDetail_genre_field" editable="false" prefHeight="91.0" prefWidth="375.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="filmDetail_director_field" editable="false" prefHeight="79.0" prefWidth="379.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <TextField fx:id="filmDetail_actors_field" editable="false" prefHeight="57.0" prefWidth="379.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <TextField fx:id="filmDetail_rating_field" editable="false" prefHeight="51.0" prefWidth="371.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <TextField fx:id="filmDetail_myRating_field" prefHeight="59.0" prefWidth="363.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <TextField fx:id="filmDetail_ratingDetail_field" prefHeight="57.0" prefWidth="367.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <Label fx:id="filmDetail_year_label" prefHeight="61.0" prefWidth="149.0" text="Rok" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="filmDetail_year_field" prefHeight="81.0" prefWidth="431.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

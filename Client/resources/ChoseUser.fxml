@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="610.0">
+         <top>
+            <Label alignment="CENTER" cache="true" graphicTextGap="0.0" prefHeight="53.0" prefWidth="324.0" text="Vyber si firmu" textFill="#b3b3b3" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+         </top>
+         <center>
+            <TableView fx:id="Tabulka" onMouseClicked="#Click" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <columns>
+                  <TableColumn fx:id="IDColumn" prefWidth="87.0" text="ID" />
+                  <TableColumn fx:id="NazovColumn" prefWidth="213.0" text="Nazov" />
+                  <TableColumn fx:id="AdressColumn" minWidth="0.0" prefWidth="299.0" text="Adresa" />
+               </columns>
+            </TableView>
+         </center>
+         <bottom>
+            <HBox prefHeight="40.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="Prev" alignment="CENTER" mnemonicParsing="false" onAction="#VyhladajPrev" style="-fx-background-color: #212121;" text="Predchadzajuci" textFill="#b3b3b3">
+                     <HBox.margin>
+                        <Insets left="125.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="Refresh" alignment="CENTER" mnemonicParsing="false" onAction="#Vyhladaj" style="-fx-background-color: #212121;" text="Obnovit" textFill="#b3b3b3">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="Next" alignment="CENTER" mnemonicParsing="false" onAction="#VyhladajNext" style="-fx-background-color: #212121;" text="Dalsi" textFill="#b3b3b3">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="back" alignment="CENTER" mnemonicParsing="false" onAction="#back" text="Spat" textFill="#b3b3b3">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

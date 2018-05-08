@@ -5,16 +5,12 @@ import model.User;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import java.sql.*;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 @Stateless
 @Remote(LoginBeanRemote.class)
 public class LoginBean implements LoginBeanRemote {
-    public static final Logger logger=Logger.getLogger(LoginBean.class.getName());
-
-
 
     public LoginBean() {
     }
@@ -26,8 +22,6 @@ public class LoginBean implements LoginBeanRemote {
         Connection con = null;
         String driver = "org.postgresql.Driver";
         try {
-            FileHandler fh = new FileHandler("C:\\Programovanie\\Java\\Vava20182\\resources\\ServerlogFile.txt", true);
-            logger.addHandler(fh);
 
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/vava",
@@ -41,32 +35,29 @@ public class LoginBean implements LoginBeanRemote {
 
 
             rs.next();
-            logger.info("--------------------- " + rs.getInt(1));
+            ServerLogger.log(Level.INFO,"--------------------- " + rs.getInt(1));
             //System.out.println("asdasdad " + rs.getInt(1) + " " + rs);
             user= new User(rs.getInt(1),rs.getString(2),
                     rs.getString(3),rs.getString(4));
             System.out.println("User name " + user.getLogin() + " LOGIN " + user.getPassword() + " MAIL " + user.getEmail());
             return user;
-        } catch (Exception e){
-
-            logger.log(Level.INFO,"ERROR ",e);
+        } catch (SQLException e){
+            ServerLogger.log(Level.INFO,"Zle zadane meno alebo heslo ");
             e.printStackTrace();
         }
+          catch (Exception ex){
+            ServerLogger.log(Level.INFO,"Chyba ",ex);
+             ex.printStackTrace();
+        }
         return null;
-        //return "User name " + user.getLogin();
+
     }
 
     public User authentification(User user){
 
-
         Connection con = null;
         String driver = "org.postgresql.Driver";
         try {
-            FileHandler fh = new FileHandler("C:\\Programovanie\\Java\\Vava20182\\resources\\ServerlogFile.txt", true);
-           // logger.addHandler(fh);
-
-            //logger.log(Level.INFO,"FUNGUJE");
-            //logger.fine("Log Funguje");
 
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/vava",
@@ -86,13 +77,15 @@ public class LoginBean implements LoginBeanRemote {
                     rs.getString(3),rs.getString(4));
             System.out.println("User name " + user.getLogin() + " LOGIN " + user.getPassword() + " MAIL " + user.getEmail());
             return user;
-        } catch (Exception e){
-
-            logger.log(Level.INFO,"ERROR ",e);
+        } catch (SQLException e){
+            ServerLogger.log(Level.INFO,"Zle zadane meno alebo heslo ");
             e.printStackTrace();
         }
+        catch (Exception ex){
+            ServerLogger.log(Level.INFO,"Chyba ",ex);
+            ex.printStackTrace();
+        }
         return null;
-        //return "User name " + user.getLogin();
     }
 
     public int Registracia(User user) {
@@ -100,9 +93,6 @@ public class LoginBean implements LoginBeanRemote {
         String driver = "org.postgresql.Driver";
         PreparedStatement stmt = null;
         try {
-            FileHandler fh = new FileHandler("C:\\Programovanie\\Java\\Vava20182\\resources\\ServerlogFile.txt", true);
-            logger.addHandler(fh);
-
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/vava",
                     "postgres" , "heslo");
@@ -121,10 +111,14 @@ public class LoginBean implements LoginBeanRemote {
             System.out.println("User name " + user.getLogin() + " LOGIN " + user.getPassword() + " MAIL " + user.getEmail());
 
             return 1;
-        } catch (Exception e){
-            logger.log(Level.INFO,"ERROR ",e);
+        } catch (SQLException e){
+            ServerLogger.log(Level.INFO,"Nepodarilo sa registrovat uzivatela ");
             e.printStackTrace();
             return 0;
+        } catch (Exception e){
+            ServerLogger.log(Level.INFO,"Bean exception ",e);
+            e.printStackTrace();
+        return 0;
         }
     }
 

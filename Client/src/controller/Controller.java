@@ -214,7 +214,7 @@ public class Controller {
     @FXML
     public void changeLangLoginEN(){
         BeanInvoker.logger.fine("Jazyk zmeneny na Anglictinu");
-        Locale.setDefault(new Locale("en", "US"));
+        Locale.setDefault(new Locale("es", "ES"));
         initialize();
     }
 
@@ -269,6 +269,7 @@ public class Controller {
         }
         catch (NamingException e){
             BeanInvoker.logger.severe("Naming Exception "+ e.getStackTrace());
+            e.printStackTrace();
         }
     }
 
@@ -330,6 +331,7 @@ public class Controller {
                 fillTable(movieList);
             } catch (Exception e){
                 BeanInvoker.logger.log(Level.WARNING,"ERROR",e.getMessage());
+                e.printStackTrace();
             }
         }
         if (ScreenManager.getStage().getTitle().equals("User")){
@@ -406,6 +408,7 @@ public class Controller {
             }
         } catch (Exception e){
             BeanInvoker.logger.log(Level.WARNING,"ERROR",e.getMessage());
+            e.printStackTrace();
         }
         new FilmDetailView();
     }
